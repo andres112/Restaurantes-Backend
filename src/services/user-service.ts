@@ -9,7 +9,8 @@ import { User } from './common/user';
 
 export class UserService {
 
-    // se crea un metodo para definir la conexion a la coleccion users en la base de datos
+    // se crea un metodo para definir la conexion a la coleccion users en la base de datos debido a
+    //que la conexion a la base de datos puede tardar 
     get db(): Collection<User> { //con Collection <User> se asegura que solo se retornen objetos de ese tipo
         return this.con.db.collection("users");
     }
