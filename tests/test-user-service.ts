@@ -5,6 +5,7 @@ import * as mocha from 'mocha';
 import { DBConnection } from '../src/services/db-connection';
 import { UserService } from '../src/services/user-service';
 
+// se describe una categoria de pruebas
 describe("User Service", function () {
 
   let db: DBConnection;
@@ -16,24 +17,26 @@ describe("User Service", function () {
     password: "123"
   };
 
+  //se define que se debe realizar antes de las pruebas
   before(function (done) {
-    chai.should();
-    chai.use(chaiAsPromised);
+    chai.should(); //define metodo de dicha clase para postular lo que deberia
+    chai.use(chaiAsPromised); //metodo use en donde se utiliza una promesa
 
-    db = new DBConnection({
+    db = new DBConnection({ // se define una base de datos diferente para no afectar la real
       host: "mongodb://localhost",
       port: 27017,
       database: "restauranteTest"
     }, ()=> {
       
       service = new UserService(db);
-      done();
+      done(); //como es algo asincrono, me define hasta que este realizada la accion
     });
   });
 
+  //DEFINE EL CONJUNTO DE TAREAS A REALIZAR
+
   it("Signin", function () {
-    return service.signin(user)
-      .should.eventually.property("insertedCount").equal(1);
+    return service.signin(user).should.eventually.property("insertedCount").equal(1);
 
   });
 
@@ -52,6 +55,7 @@ describe("User Service", function () {
       .should.eventually.null;
   });
 
+  //Funciones que se ejecutan luego de hacer las pruebas
   after(function(done){
     db.db.dropCollection("users",function(err){
       if(err) done(err)

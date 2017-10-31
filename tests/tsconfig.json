@@ -4,7 +4,7 @@
 		"target": "es5",
 		"outDir": "./out",
 		"lib": [
-			"es6"
+			"es6","dom" // se agrega la libreria "dom" necesaria para las pruebas
 		],
 		"sourceMap": true,
 		"rootDirs": [".", "../src"]
