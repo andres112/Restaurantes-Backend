@@ -1,4 +1,6 @@
 import { Con, DBConnection } from './db-connection';
+//importa ObjectID para manejar los datos que se envian a mongo para ser buscados 
+// a traves de metodos de comparacion com delete o update
 import { Collection, ObjectID } from 'mongodb';
 import { Plate } from './common/plate';
 
@@ -48,4 +50,5 @@ export class PlateService {
 
 }
 
+//singleton para  el servicio de plates
 export const plateService = new PlateService(Con);

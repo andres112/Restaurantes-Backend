@@ -1,4 +1,6 @@
 import { userService } from '../../services/user-service';
+//Aqui se trae la clase User, ya que es necesario modificar valores en la BD
+//mientras que en el login solo es consulta
 import { User } from '../../services/common/user';
 import { ResponseBody } from '../common/response-body';
 import { Request, Response } from 'express';
