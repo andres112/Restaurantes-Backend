@@ -12,7 +12,7 @@ import { Request, Response } from 'express';
 export interface LoginBody {//el export en este caso es para las pruebas
     email: string;
     password: string;
-}
+} //con esta interfaz se castea el body del request
 
 //se define la funcion de control de login
 export function login(req: Request, res: Response, next) {

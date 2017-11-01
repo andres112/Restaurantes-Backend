@@ -2,8 +2,8 @@ import * as chai from 'chai';
 import * as chaiAsPromised from 'chai-as-promised';
 import * as mocha from 'mocha';
 
-import { DBConnection } from '../src/services/db-connection';
-import { UserService } from '../src/services/user-service';
+import { DBConnection } from '../../src/services/db-connection';
+import { UserService } from '../../src/services/user-service';
 
 // se describe una categoria de pruebas
 describe("User Service", function () {

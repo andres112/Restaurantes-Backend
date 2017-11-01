@@ -12,11 +12,11 @@ export class Table { //Se define la clase mesa
 }
 
 export class Restaurant { //El restaurante con sus atributos
-    _id: string;
+    _id?: string; //se coloca ? significa que son opcionales
     nombre: string;
     direccion: string;
     contacto: string;
     imagen: string;
     localizacion: Location; // la localizacion del restaurante
-    mesas: Table[]; // las mesas con sus respectivos atributos e identificacion
+    mesas?: Table[]; // las mesas con sus respectivos atributos e identificacion
 }
