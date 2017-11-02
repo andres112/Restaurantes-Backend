@@ -4,7 +4,11 @@ import {
     , allTable, tableAvailable, tableUpdate
 } from '../controllers/restaurants/index';
 
+import { verifyAuth } from '../middlewares/auth'; //utiliza el middleware de autenticacion
+
 const router: Router = Router();
+
+router.use(verifyAuth);// como el orden importa si este no se ejecuta no sigue ninguna
 
 router.get('/', all);
 router.get('/point', allLocation);

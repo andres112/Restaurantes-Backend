@@ -4,7 +4,11 @@ import {
     deletePlate, insert, update
 } from '../controllers/plates/index';
 
+import { verifyAuth } from '../middlewares/auth'; //utiliza el middleware de autenticacion
+
 const router: Router = Router();
+
+router.use(verifyAuth); //si este no se ejecuta con resultado positivo, no siguen las demas rutas
 
 router.get("/:id", all);
 router.get("/", allByIngredients);

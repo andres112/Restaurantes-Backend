@@ -2,6 +2,8 @@ import app from './app';
 import * as debugModule from 'debug';
 import * as http from 'http';
 
+import { tableIO } from './services/table-io-service';
+
 const debug = debugModule('node-express-typescript:server');
 
 // Get port from environment and store in Express.
@@ -14,10 +16,12 @@ server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+tableIO.init(server); //se envia el server inicializado al socket service
+
 /**
  * Normalize a port into a number, string, or false.
  */
-function normalizePort(val: any): number|string|boolean {
+function normalizePort(val: any): number | string | boolean {
   let port = parseInt(val, 10);
 
   if (isNaN(port)) {

@@ -1,14 +1,46 @@
-# README
-## This the readme for your application "node-express-typescript" 
--------------------
-### Visual Studio Code has *awesome* Markdown support!
+# restaurantes v1.0.0
 
-* Split the editor (`Cmd+\` on OSX or `Ctrl+\` on Windows and Linux)
-* Toggle preview (`Shift+CMD+V` on OSX or `Shift+Ctrl+V` on Windows and Linux)
-* Press `Ctrl+Space` (Windows, Linux) or `Cmd+Space` (OSX) to see a list of Markdown snippets
+Backend para restaurantes y platos
 
-### For more information
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](http://daringfireball.net)
+- [Usuarios](#usuarios)
+	- [Inicio de Sesion](#inicio-de-sesion)
+	- [Registro de Usuarios](#registro-de-usuarios)
+	
 
-**Enjoy!**
+
+# Usuarios
+
+## Inicio de Sesion
+
+
+
+	POST /api/v1/login
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Credenciales			| Object			|  <p>Objeto JSON</p>							|
+| Credenciales.email			| String			|  <p>Email de Usuario</p>							|
+| Credenciales.password			| String			|  <p>Password de Usuario</p>							|
+
+## Registro de Usuarios
+
+
+
+	POST /api/v1/users/signin
+
+
+### Parameters
+
+| Name    | Type      | Description                          |
+|---------|-----------|--------------------------------------|
+| Usuario			| object			|  <p>Objeto JSON</p>							|
+| Usuario._id			| String			|  <p>Identificador de usuario, ignorable</p>							|
+| Usuario.nombre			| String			|  <p>Nombre de Usuario</p>							|
+| Usuario.email			| String			|  <p>Email de Usuario</p>							|
+| Usuario.celular			| String			|  <p>Celular de Usuario</p>							|
+| Usuario.password			| String			|  <p>Password del Usuario</p>							|
+
+

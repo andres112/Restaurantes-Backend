@@ -7,5 +7,7 @@ export const config = {
         host:"mongodb://localhost",
         port:27017,
         database:"restauranteDB"
-    }
+    },
+
+    secret :'R35taurant35' //define clave para encriptar lo que va en el login
 }
