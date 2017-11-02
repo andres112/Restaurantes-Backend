@@ -6,12 +6,19 @@ import * as chaiAsPromised from 'chai-as-promised'; //Manejar los resultados com
 
 import app from '../../src/app'; //importa el app.ts
 import { InsertBody, TableUpdateBody } from '../../src/controllers/restaurants/index';
+import { User } from '../../src/services/common/user';
 
 describe("Restaurant Route", function () {
 
     let request: SuperTest<Test>;
 
     let id: string;
+    let usr: User = {
+        nombre: "Andres",
+        celular: "0123456789",
+        email: "andres.dorado90@gmail.com",
+        password: "12345"
+    };
 
     before(function () {
         chai.should();
@@ -21,7 +28,28 @@ describe("Restaurant Route", function () {
         //Por lo tanto se deben reestablecer sus datos al finalizar las pruebas
     });
 
-    //Inician las prubas
+    //Inician las pruebas
+
+    it.skip("Signin new User", function () {
+
+        return request.post("/api/v1/users/signin")
+            .set("Content-Type", "application/json") //fijo el contenido de la cabecera de la peticion
+            .send(usr) //envia un objeto en el body del requerimiento
+            .expect(200)
+            .should.eventually
+            .property("body")
+            .property("success").true;
+    });
+
+    it("Loging User", function () {
+        return request.post("/api/v1/users/login")
+        .set("Content-Type", "application/json") //fijo el contenido de la cabecera de la peticion
+        .send({email:usr.email, password:usr.password}) //envia un objeto en el body del requerimiento
+        .expect(200)
+        .should.eventually
+        .property("body")
+        .property("success").true;
+    });
 
     //it.skip me salta esas pruebas 
     //it.only se ejecuta solamente
@@ -73,13 +101,13 @@ describe("Restaurant Route", function () {
             .then(res => {
                 id = res.body.data[0]._id;
                 res.body.data.should.to.have.lengthOf(1);
-                
+
                 done();
             })
             .catch(err => done(err));
 
     });
-    
+
     it("Get by Location", function () {
         return request.get("/api/v1/restaurants/point") //se agrega esta ruta, ya que fue definida en restaurant de route
             .query({ lat: 2.452403, lon: -76.598183, km: 1 })
